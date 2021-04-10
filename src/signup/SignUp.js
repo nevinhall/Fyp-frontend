@@ -1,5 +1,5 @@
-// import { Button, Form} from 'react-bootstrap';
 import React, { useState } from 'react';
+import { useHistory } from "react-router-dom";
 import Form from "../sharedComponents/Form"
 import HandleFormData from "../sharedComponents/HandleFormData"
 
@@ -7,6 +7,13 @@ const SignUp = () =>{
     //Define hooks to store data.
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const history = useHistory();
+
+    const routeChange = () =>{ 
+      let path = "/login"; 
+      history.push(path);
+    }
 
 
     //Handlers.
@@ -16,22 +23,13 @@ const SignUp = () =>{
         const  url="http://127.0.0.1:5000/signup"
         const rediectTo="/login"
 
-
         const res = await HandleFormData(email,password,url,rediectTo)
 
-        if(res != "failure"){
-
-            console.log("signup success");
+        if(res !== "failure"){
+            routeChange()
         }
         else{
-            return(
-                <Form
-                     handleSubmit={handleSubmit}
-                     setEmail={setEmail}
-                     setPassword={setPassword}
-                />
-            )
-
+            window.location.reload();
         }
     
     }
