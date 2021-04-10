@@ -1,8 +1,11 @@
 import { Button, CardGroup,Card} from 'react-bootstrap';
 import React, { useState,useContext } from 'react';
 import { useHistory } from "react-router-dom";
+
+//Import Required Components.
 import CardComponent from "../sharedComponents/CardComponent"
 import authContext from "../sharedComponents/authContext";
+import GenerateExercisePlanHome  from "../generateExercisePlan/GenerateExcercisePlanHome"
 
 const MainPage = () =>{
     const { authenticated } = useContext(authContext);
@@ -15,7 +18,7 @@ const MainPage = () =>{
             <CardComponent
              title={"Exercise Plan"} 
              data={"View or generate your exercise plans here"}
-             link={"/"}
+             link={"/generatehxcercisePlanhome"}
            />
 
             <CardComponent   

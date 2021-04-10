@@ -1,9 +1,11 @@
-// import { Button, Form} from 'react-bootstrap';
 import React, { useState,useContext} from 'react';
+import { useHistory } from "react-router-dom";
+
 import Form from "../sharedComponents/Form"
 import HandleFormData from "../sharedComponents/HandleFormData"
 import authContext from "../sharedComponents/authContext";
-import { useHistory } from "react-router-dom";
+import routeChange from "../sharedComponents/routeChange"
+
 
 const Login = () =>{
     //Define hooks to store data.
@@ -11,14 +13,7 @@ const Login = () =>{
     const [password, setPassword] = useState("");
     const { setAuthenticated } = useContext(authContext);
 
-
     const history = useHistory();
-
-    const routeChange = () =>{ 
-      let path = "/mainpage"; 
-      history.push(path);
-    }
-
 
     //Handlers.
     const handleSubmit = async (e) =>{
@@ -34,7 +29,7 @@ const Login = () =>{
         }else{
             console.log(res);
             setAuthenticated(res)
-            routeChange()
+            routeChange(history,"/mainpage")
         }
 
     

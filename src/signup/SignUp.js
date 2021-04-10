@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
+
 import Form from "../sharedComponents/Form"
+import routeChange from "../sharedComponents/routeChange"
 import HandleFormData from "../sharedComponents/HandleFormData"
 
 const SignUp = () =>{
@@ -9,12 +11,6 @@ const SignUp = () =>{
     const [password, setPassword] = useState("");
 
     const history = useHistory();
-
-    const routeChange = () =>{ 
-      let path = "/login"; 
-      history.push(path);
-    }
-
 
     //Handlers.
     const handleSubmit = async (e) =>{
@@ -26,7 +22,7 @@ const SignUp = () =>{
         const res = await HandleFormData(email,password,url,rediectTo)
 
         if(res !== "failure"){
-            routeChange()
+            routeChange(history,"/login")
         }
         else{
             window.location.reload();

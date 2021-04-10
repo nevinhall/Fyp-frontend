@@ -8,6 +8,7 @@ import Login from "./login/Login"
 import SignUp from "./signup/SignUp"
 import MainPage from "./mainpage/MainPage"
 import authContext from "./sharedComponents/authContext";
+import GenerateExcercisePlanHome from "./generateExercisePlan/GenerateExcercisePlanHome"
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/login" exact component={Login} />
         <Route path="/signUp" exact component={SignUp} />
         <Route path="/mainpage" exact component={MainPage} />
+        <Route path="/generatehxcercisePlanhome" exact component={GenerateExcercisePlanHome} />
       </Switch>
     </Router>
     </authContext.Provider>

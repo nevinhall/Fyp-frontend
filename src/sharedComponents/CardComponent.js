@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { Button, CardGroup,Card} from 'react-bootstrap';
+import { useHistory } from "react-router-dom";
+
+import routeChange from "../sharedComponents/routeChange"
 
 
 const  CardComponent = (props) =>{
- 
+    const history = useHistory();
     //Render Form to the user.
     return(
         <Card>
@@ -15,7 +18,7 @@ const  CardComponent = (props) =>{
         </Card.Text>
         </Card.Body>
         <Card.Footer>
-            <Button variant="primary">View {props.title}</Button>
+            <Button variant="primary" onClick={() => routeChange(history,props.link)}>View {props.title}</Button>
         </Card.Footer>
     </Card>
         
