@@ -30,7 +30,7 @@ const MainPage = () =>{
             <CardComponent   
              title={"Meal Plan"} 
              data={"View or generate your meal plans here"}
-             link={"/"}
+             link={"/generatemealplanhome"}
            />
         
         </CardGroup>
