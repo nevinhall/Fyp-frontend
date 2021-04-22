@@ -2,7 +2,6 @@ const axios = require('axios').default;
 
 
 const HandleUserIDPost = async (user_id,url) => {
-    user_id = "under_weight_scenario"
     var res =""
     try{
         var bodyFormData = new FormData();
@@ -11,7 +10,7 @@ const HandleUserIDPost = async (user_id,url) => {
         let resData = await axios.post(url,bodyFormData,{headers : {"Access-Control-Allow-Origin": "*"}})
        
         res = resData.data
-        console.log(res);
+      
 
     }catch{
         res =  "failure"

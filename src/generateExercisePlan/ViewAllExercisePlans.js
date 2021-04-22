@@ -6,21 +6,34 @@ import HandleUserIDPost  from "../sharedComponents/HandleUserIDPost"
 import authContext from "../sharedComponents/authContext";
 
 const ViewAllExercisePlans =  () =>{
-    const { authenticated } = useContext(authContext);
+    const axios = require('axios').default;
+    const  authenticated = localStorage.getItem('user_id');;
     console.log("USER IS:", authenticated );
 
-    const [allPlans, setAllPlans] = useState("You have Not created any plans");
+    const [allPlans, setAllPlans] = useState([]);
     const url = "http://127.0.0.1:5000/get_exercise_plan"
+    
+    
+ 
 
     useEffect(() => {
-        HandleUserIDPost(authenticated, url)
-        .then(allPlans => setAllPlans(() => allPlans))
-        .catch(() => setAllPlans("You have Not created any plans"));
-    }, []);
+        const fetchData = async () =>{
+            var bodyFormData = new FormData();
+            bodyFormData.append("user_id",authenticated);
+            const result = await axios.post(url,bodyFormData,{headers : {"Access-Control-Allow-Origin": "*"}})
+
+
+            console.log(result.data.exercise_plan);
+            setAllPlans([])
+        }
+
+        fetchData()
+      }, []);
+  
 
 
 
-    return <p>{allPlans}</p>
+    return <p>test</p>
 
 }
 

@@ -8,7 +8,7 @@ import ViewCurrentExercisePlan from "../generateExercisePlan/ViewCurrentExercise
 import ViewAllExercisePlans from "../generateExercisePlan/ViewAllExercisePlans"
 
 const GenerateExercisePlanHome = () =>{
-    const { authenticated } = useContext(authContext);
+    const  authenticated = localStorage.getItem('user_id');
     console.log("USER IS:", authenticated );
 
     //Render Form to the user.

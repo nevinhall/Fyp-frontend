@@ -27,8 +27,10 @@ const Login = () =>{
         if (res == "failure"){
             window.location.reload();
         }else{
-            console.log(res);
+            console.log(typeof res);
             setAuthenticated(res)
+            localStorage.clear()
+            localStorage.setItem('user_id', res);
             routeChange(history,"/mainpage")
         }
 

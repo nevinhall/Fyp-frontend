@@ -13,6 +13,7 @@ const HandleFormData = async (email,password,url,rediectTo) => {
    
  
     let res = await axios.post(url,bodyFormData,{headers : {"Access-Control-Allow-Origin": "*"}})
+    console.log(res.data);
     return res.data
 
  
