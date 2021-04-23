@@ -1,9 +1,10 @@
-import { Button, CardGroup,Card,Tabs,Tab} from 'react-bootstrap';
+import { Button, CardGroup,Card,Tabs,Tab,Image} from 'react-bootstrap';
 import React, { useState,useContext } from 'react';
 import { useHistory } from "react-router-dom";
 
 import authContext from "../sharedComponents/authContext";
 import HandleUserIDPost  from "../sharedComponents/HandleUserIDPost"
+import robot from "../Images/robot.png"
 
 const CreateMealPlan = () =>{
     const  authenticated = localStorage.getItem('user_id');
@@ -32,7 +33,19 @@ const CreateMealPlan = () =>{
     }
     //Render Form to the user.
     return(
-     <Button onClick={generateMealPlan}>Generate Meal Plan</Button>
+        <div className="d-flex justify-content-center m-4">
+            <div className="w-50 p-2">
+                <Image src={robot}thumbnail style={{width:200,height:250}}/>
+                <h2 className={"display-6"}> Generate Meal Plan</h2>
+                <p className="text-justify lead">
+                   We've captured your user profile now let our robots get to work on creating a meal plan
+                   tailored to your needs. This done using a combinatorial alogrithm to ensure the plan is suitable.
+                   Dont worry we've also calculated the optiaml calorie intake specifcally for you and your needs.
+                </p>  
+    
+          <Button onClick={generateMealPlan}>Generate Meal Plan</Button>
+        </div>
+         </div>
     )
 }
 

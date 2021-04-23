@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import Form from "../sharedComponents/Form"
 import routeChange from "../sharedComponents/routeChange"
 import HandleFormData from "../sharedComponents/HandleFormData"
+import {Container,Col,Row} from 'react-bootstrap';
 
 const SignUp = () =>{
     //Define hooks to store data.
@@ -32,11 +33,18 @@ const SignUp = () =>{
 
     //Render Form to the user.
     return(
-        <Form
-             handleSubmit={handleSubmit}
-             setEmail={setEmail}
-             setPassword={setPassword}
-        />
+        <Container >
+        <Row className="justify-content-md-center p-5">
+             <h1 className={"display-4"}>Sign Up</h1>
+        </Row>
+        <Row className="justify-content-md-center"> 
+            <Form 
+                handleSubmit={handleSubmit}
+                setEmail={setEmail}
+                setPassword={setPassword}
+            />
+        </Row>
+    </Container>
     )
 }
 

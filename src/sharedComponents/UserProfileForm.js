@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import HandleCreateProfile from './HandleCreateProfile';
 import authContext from "../sharedComponents/authContext";
 import routeChange from './routeChange';
+import { Container,Row,Col } from 'react-bootstrap';
 
 
 const UserProfileForm = (props) =>{
@@ -22,9 +23,9 @@ const UserProfileForm = (props) =>{
 
     const onSubmit = async (e) => {
         const url = "http://127.0.0.1:5000/createuserprofile"
-        await HandleCreateProfile(authenticated,height,weight,dietaryOptions,allergies,activityLevel,age,gender,url)
+        HandleCreateProfile(authenticated,height,weight,dietaryOptions,allergies,activityLevel,age,gender,url).then(routeChange(history,"/mainpage")
+        )
 
-        routeChange(history,"/mainpage")
     }
 
     const onChangeHeight = (e) => {
@@ -74,45 +75,87 @@ const UserProfileForm = (props) =>{
  
     //Render Form to the user.
     return(
+        <Container  className="d-flex justify-content-around mt-5">
         <form onSubmit={onSubmit}>
+            <Row>
             <label>
+                <Col>
                 Height:
+                </Col>
+                <Col>
                 <input type="number" name="Height" id="Height"  onChange={onChangeHeight}/>
+                </Col>
             </label>
+            </Row>
 
+            <Row>
             <label>
+                <Col>
                 Weight:
+                </Col>
+                <Col>
                 <input type="number" name="Weight" id="Weight" onChange={onChangeWeight}/>
+                </Col>
             </label>
+            </Row>
+            <Row>
+                    
+                <label>
+                    <Col>
+                        Activity level:
+                    </Col>
+                    <Col>
+                        <input type="text" name="activity_level" id="activity_level"  onChange={onChangeActivityLevel}/>
+                    </Col>
+                </label>
+            </Row>
 
+            <Row>
             <label>
-                Activity level:
-                <input type="text" name="activity_level" id="activity_level"  onChange={onChangeActivityLevel}/>
+                <Col>
+                     Dietary Options:
+                </Col>
+                <Col>
+                    <input type="text" name="dietary_options" id="dietary_options"   onChange={onChangeDietaryOptions}/>
+                </Col>
             </label>
+            </Row>
 
+            <Row>
             <label>
-                Dietary Options:
-                <input type="text" name="dietary_options" id="dietary_options"   onChange={onChangeDietaryOptions}/>
+                <Col>
+                      Gender:
+                </Col>
+                <Col>
+                     <input type="text" name="gender" id="gender"   onChange={onChangeGender}/>
+                </Col>
             </label>
+            </Row>
 
+            <Row>
             <label>
-                Gender:
-                <input type="text" name="gender" id="gender"   onChange={onChangeGender}/>
-            </label>
-
-            
-            <label>
+                <Col>
                 Allergies:
+                </Col>
+                <Col>
                 <input type="text" name="allergies" id="allergies"   onChange={onChangeAllergies}/>
+                </Col>
             </label>
+            </Row>
 
-            
+            <Row>
             <label>
-                Age:
-                <input type="number" name="age" id="age"  onChange={onChangeAge}/>
+                 <Col>
+                      Age:
+                </Col>
+                <Col>
+                  <input type="number" name="age" id="age"  onChange={onChangeAge}/>
+                </Col>
             </label>
+            </Row>
             <input type="submit" value="Submit" />
       </form>
+      </Container>
     )
 }
 

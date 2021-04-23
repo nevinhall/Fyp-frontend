@@ -1,4 +1,4 @@
-import { Button, CardGroup,Card,Tabs,Tab} from 'react-bootstrap';
+import { Button, CardGroup,Card,Tabs,Tab,Col,Row,Container} from 'react-bootstrap';
 import React, { useState,useContext,useEffect} from 'react';
 import { useHistory } from "react-router-dom";
 
@@ -19,7 +19,12 @@ const ViewCurrentExercisePlan = () =>{
             bodyFormData.append("user_id",authenticated);
             const result = await axios.post(url,bodyFormData,{headers : {"Access-Control-Allow-Origin": "*"}})
 
-             setAllPlans(result.data.exercise_plan)
+            if(!result.data){
+              setAllPlans([])
+            }else{
+              setAllPlans(result.data.exercise_plan)
+            }
+            
              console.log(allPlans);
              setIsLoaded(true)
             
@@ -31,49 +36,68 @@ const ViewCurrentExercisePlan = () =>{
   
 
     return(
-        <div>
-        <div>
-            {allPlans.length > 0 ? allPlans[0].map( (exercise) => (
-            //    <p>{meal.Meal}</p>
-              
+        <Container fluid>
+        <Row>
+          <Col>
+          <div>
+          <div>
+             {allPlans.length > 0 ? allPlans[0].map( (exercise) => (
                 <Card>
-                <Card.Body>
-                <Card.Title><h2>{exercise.name}</h2></Card.Title>
-                <Card.Text>
-                     <h3>Type:</h3>
-                    <h4>{exercise.type}</h4>
-                    <h3>Reps:</h3>
-                    <h4>{exercise.reps}</h4>
-
-                    <p>{exercise.desciption}</p>
-                </Card.Text>
-                </Card.Body>
-                <Card.Footer>
-                   
-                </Card.Footer>
-            </Card>
-           )): 'Fetching...'}
-        </div>
-
-        <div>
-        {allPlans.length > 0 ?  <Card>
                     <Card.Body>
-                    <Card.Title><h2>{allPlans[1].name}</h2></Card.Title>
-                    <Card.Text>
-                        <h3>Type:</h3>
-                        <h4>{allPlans[1].type}</h4>
-                        <h3>Reps:</h3>
-                        <h4>{allPlans[1].reps}</h4>
+                    <Card.Title className="mb-5"><h1>{exercise.name}</h1></Card.Title>
+                        <Card.Text>
 
-                        <p>{allPlans[1].desciption}</p>
-                    </Card.Text>
+                            <h4>The Facts:</h4>
+                            <p>This exercise is of type <strong>{exercise.type}</strong> we suggest to hit a minimum of<strong>{exercise.reps}</strong> but if you can push harder go for it ! 
+                            </p>
+
+                            <h4>How its Done:</h4>
+                            <p>{exercise.desciption}</p>
+                        </Card.Text>
                     </Card.Body>
                     <Card.Footer>
-                   
-                </Card.Footer>
-            </Card> : ''}
-        </div> 
-        </div>
+                    </Card.Footer>
+                    </Card>
+            )): 'Fetching...'}
+            </div>
+
+            <div>
+            {allPlans.length > 0 ?  <Card>
+                        <Card.Body>
+                        <Card.Title className="mb-5"><h1>{allPlans[1].name}</h1></Card.Title>
+                        <Card.Text>
+
+                            <h4>The Facts:</h4>
+                            <p>This exercise is of type <strong>{allPlans[1].type}</strong> we suggest to hit a minimum of<strong>{allPlans[1].reps}</strong> but if you can push harder go for it ! 
+                            </p>
+
+                            <h4>How its Done:</h4>
+                            <p>{allPlans[1].desciption}</p>
+                        </Card.Text>
+                        </Card.Body>
+                        <Card.Footer>
+                    
+                    </Card.Footer>
+                </Card> : ''}
+            </div> 
+
+            
+            </div>
+          
+          </Col>
+          <Col>
+            <div className="m-5">
+            <h3 className={"display-4"}>Ta Da!</h3>
+            <p className="text-justify lead">
+                Here it is, your very own exercise plan tailored to your needs
+                We recommend doing three rounds of these exercises once a day for 
+                the week. Follow it closely along with your meal plan and you'll 
+                be fit as a fiddle in no time.
+            </p>
+            </div>
+          </Col>
+        </Row>
+      </Container>
     )
     
 
@@ -82,4 +106,10 @@ const ViewCurrentExercisePlan = () =>{
     
 }
 
+
+
+
+
 export default ViewCurrentExercisePlan;
+
+

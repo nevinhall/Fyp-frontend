@@ -10,7 +10,7 @@ const  CardComponent = (props) =>{
     //Render Form to the user.
     return(
         <Card>
-        <Card.Img variant="top" src="holder.js/100px160" />
+        <Card.Img variant="top" src={props.image} />
         <Card.Body>
         <Card.Title>{props.title}</Card.Title>
         <Card.Text>

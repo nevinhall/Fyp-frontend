@@ -1,4 +1,4 @@
-import { Button, CardGroup,Card,Modal} from 'react-bootstrap';
+import { Button, CardGroup,Card,Modal,Row,Col,Container} from 'react-bootstrap';
 import React, { useState,useContext,useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 
@@ -9,6 +9,12 @@ import routeChange from "../sharedComponents/routeChange"
 import GenerateExercisePlanHome  from "../generateExercisePlan/GenerateExcercisePlanHome"
 import HandleUserIDPost  from "../sharedComponents/HandleUserIDPost"
 import UserProfileForm from '../sharedComponents/UserProfileForm';
+import Navbar from "../sharedComponents/Nav"
+
+import workout from "../Images/workout.png"
+import food from "../Images/food.png"
+import userprofile from "../Images/userprofile.png"
+
 
 const MainPage = () =>{
     const authenticated = localStorage.getItem('user_id');
@@ -25,7 +31,7 @@ const MainPage = () =>{
       console.log("This is res", res);
         
 
-        if(res == "None"){
+        if(!res){
           setShow(true)
          
         }
@@ -51,44 +57,65 @@ const MainPage = () =>{
     return(
       <div>
     
-     
+      <Navbar/>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Warning</Modal.Title>
+          <Modal.Title style={{color:"red"}}>Warning</Modal.Title>
         </Modal.Header>
+        <p className="m-3">
         You have not yet created a user profile. Please create one first before procceding.
+        </p>
         <Modal.Footer>
           <Button variant="primary" onClick={handleVisit}>
-            Creat Profile Now
+            Create Profile Now
           </Button>
         </Modal.Footer>
       </Modal>
-    
-    
-    
 
-          
-        <CardGroup>
-       
-            <CardComponent
-             title={"Exercise Plan"} 
-             data={"View or generate your exercise plans here"}
-             link={"/generatehxcercisePlanhome"}
-            />
 
-            <CardComponent   
-             title={"User Profile"} 
-             data={"View. amenend or create your user profile here"}
-             link={"/userprofilehome"}
-           />
 
-            <CardComponent   
-             title={"Meal Plan"} 
-             data={"View or generate your meal plans here"}
-             link={"/generatemealplanhome"}
-           />
-        
-        </CardGroup>
+      <Container className="mt-5">
+            <Row>
+              <Col>
+                  <CardGroup>
+            
+                      <CardComponent
+                    
+                      title={"Exercise Plan"} 
+                      data={"View or generate your exercise plans here"}
+                      link={"/generatehxcercisePlanhome"}
+                      image={workout}
+                      />
+
+                      <CardComponent   
+                      title={"User Profile"} 
+                      data={"View. amenend or create your user profile here"}
+                      link={"/userprofilehome"}
+                      image={userprofile}
+                    />
+
+                      <CardComponent   
+                      title={"Meal Plan"} 
+                      data={"View or generate your meal plans here"}
+                      link={"/generatemealplanhome"}
+                      image={food}
+                    />
+              
+                </CardGroup>
+              
+              </Col> 
+
+              <Col xs="5" className="mt-5">
+                <h1 className={"display-6"}> Main Page</h1>
+                <p className="text-justify lead">
+                   Well done, you've taken the first steps in living a healthier and happier lifstyle.
+                   From here you can naviagte through the various factors of the application as seen on the 
+                   left. 
+                </p>
+              </Col>
+            
+            </Row>
+        </Container>
         </div>
     )
 }

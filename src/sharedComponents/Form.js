@@ -17,18 +17,30 @@ const Form = (props) =>{
 
     //Render Form to the user.
     return(
-        <form onSubmit={props.handleSubmit}>
-            <label>
-                Name:
-                <input type="email" name="email" onChange={OnChangeEmail}/>
-            </label>
+ 
+        <form onSubmit={props.handleSubmit} className="d-block d-flex justify-content-center">
+            <div>
+                <div className="d-block d-flex justify-content-center p-3">
+                    <label>
+                        Name:
+                        <input type="email" name="email" onChange={OnChangeEmail}/>
+                    </label>
+                </div>
 
-            <label>
-                Password:
-                <input type="password" name="password"  onChange={OnChangePassword}/>
-            </label>
-            <input type="submit" value="Submit" />
+                <div className="d-block d-flex justify-content-center p-3">
+                    <label>
+                        Password:
+                        <input type="password" name="password"  onChange={OnChangePassword}/>
+                    </label>
+                </div>
+               
+                <div  className="d-block d-flex justify-content-center">
+                      <input  type="submit" value="Submit"  />    
+                </div>
+              
+            </div>
       </form>
+    
     )
 }
 

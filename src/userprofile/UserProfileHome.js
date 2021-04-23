@@ -3,6 +3,8 @@ import React, { useState,useContext } from 'react';
 import { useHistory } from "react-router-dom";
 import ViewUserProfile from './ViewUserProfile';
 import authContext from "../sharedComponents/authContext";
+import Navbar from "../sharedComponents/Nav"
+import DeleteUserProfile from "./DeleteUserProfile"
 
 
 
@@ -12,17 +14,21 @@ const UserProfileHome = () =>{
 
     //Render Form to the user.
     return(
-        <Tabs defaultActiveKey="Home" id="uncontrolled-tab-example">
+        <div>
+        <Navbar/>
+        <Tabs defaultActiveKey="My Profile" id="uncontrolled-tab-example">
             <Tab eventKey="Create" title="Create Meal Plan">
                
             </Tab>
-            <Tab eventKey="Home" title="Home">
-              
-            </Tab>
-            <Tab eventKey="history" title="History">
+            <Tab eventKey="My Profile" title="My Profile">
                 <ViewUserProfile />
             </Tab>
+            <Tab eventKey="Delete My Profile" title="Delete My Profile">
+                <DeleteUserProfile/>
+               
+            </Tab>
         </Tabs>
+        </div>
   
     )
 }

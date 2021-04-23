@@ -49,23 +49,23 @@ const ViewCurrentMealPlan = (props) =>{
         console.log(element);
     });
     return(
-        <div>
-           {allPlans.map( (meal) => (
+        <div className="d-flex justify-content-around">
+        <div className="w-75">
+           {allPlans.length > 0 ? allPlans.map( (meal) => (
             //    <p>{meal.Meal}</p>
 
-            
-              
-            <Card>
+        
+            <Card className="mt-5">
             <Card.Body>
-            <Card.Title><h2>{meal.Meal}</h2></Card.Title>
+            <Card.Title ><h3 className={"display-3"}>{meal.Meal}</h3></Card.Title>
             <Card.Text>
             <ListGroup>
-                <h3>Calories:</h3>
-                <h4>{meal.calories}</h4>
-                <h3>Macro Breakdown</h3>
-                <ListGroup.Item>Protein: {meal.Protein}</ListGroup.Item>
-                <ListGroup.Item>Fats: {meal.Fats}</ListGroup.Item>
-                <ListGroup.Item>Carbs: {meal.Carbs}</ListGroup.Item>
+                <h4>Calories:</h4>
+                <p><strong>{meal.calories}</strong></p>
+                <h4>Macro Breakdown</h4>
+                <ListGroup.Item>Protein 🥩: <strong>{meal.Protein}</strong></ListGroup.Item>
+                <ListGroup.Item>Fats 🍬: <strong>{meal.Fats}</strong></ListGroup.Item>
+                <ListGroup.Item>Carbs 🥔:  <strong>{meal.Carbs}</strong></ListGroup.Item>
                 </ListGroup>
             </Card.Text>
             </Card.Body>
@@ -73,7 +73,8 @@ const ViewCurrentMealPlan = (props) =>{
                 <Button variant="primary" onClick={() => history.push({pathname: '/mealinfo',  name: meal.Meal,  area: meal.strArea, instructions: meal.strInstructions,youtube: meal.strYoutube})}>View {props.title}</Button>
             </Card.Footer>
         </Card>
-           ))}
+           )) : "Fetching"}
+        </div>
         </div>
   
 

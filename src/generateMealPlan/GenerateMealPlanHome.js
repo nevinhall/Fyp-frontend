@@ -6,6 +6,7 @@ import authContext from "../sharedComponents/authContext";
 import CreateMealPlan from "../generateMealPlan/CreateMealPlan"
 import ViewAllMealPlans from "../generateMealPlan/ViewAllMealPlans"
 import ViewCurrentMealPlan from "../generateMealPlan/ViewCurrentMealPlan"
+import Navbar from "../sharedComponents/Nav"
 
 const GenerateMealPlanHome = () =>{
     // const { authenticated } = useContext(authContext);
@@ -13,6 +14,8 @@ const GenerateMealPlanHome = () =>{
 
     //Render Form to the user.
     return(
+        <div>
+        <Navbar/>
         <Tabs defaultActiveKey="Home" id="uncontrolled-tab-example">
             <Tab eventKey="Create" title="Create Meal Plan">
                  <CreateMealPlan authenticated={authenticated}/>
@@ -24,6 +27,7 @@ const GenerateMealPlanHome = () =>{
                 <ViewAllMealPlans authenticated={authenticated}/>
             </Tab>
         </Tabs>
+        </div>
   
     )
 }

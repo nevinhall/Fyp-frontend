@@ -15,15 +15,21 @@ const ViewAllMealPlans =  () =>{
     useEffect(async () => {
         let res = await HandleUserIDPost(authenticated, url)
         console.log(res);
+        if (res == "failure"){
+            setAllPlans([])
+        }else{
+            setAllPlans(res)
+        }
+        console.log(res);
 
-        setAllPlans(res)
+     
     }, []);
 
 
 
     return(
         <div>
-        {allPlans.length > 0 ? allPlans.map((mealplan) => (
+        {allPlans.length > 0  ? allPlans.map((mealplan) => (
          //    <p>{meal.Meal}</p>
          <Card>
          <Card.Body>
