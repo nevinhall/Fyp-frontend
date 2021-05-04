@@ -15,6 +15,7 @@ import UserProfileHome from './userprofile/UserProfileHome';
 import UserProfileForm from './sharedComponents/UserProfileForm';
 import AdditionalInfo from './generateMealPlan/AdditionalInfo';
 import Landing from './landingpage/Landing';
+import Admin from './admin/Admin';
 
 
 
@@ -34,6 +35,7 @@ function App() {
         <Route path="/userprofilehome" exact component={UserProfileHome} />
         <Route path="/userprofileform" exact component={UserProfileForm} />
         <Route path="/mealinfo" exact component={AdditionalInfo} />
+        <Route path="/admin" exact component={Admin} />
       </Switch>
     </Router>
     </authContext.Provider>

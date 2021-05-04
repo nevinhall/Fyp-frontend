@@ -11,14 +11,14 @@ const  Navbar = (props) =>{
     //Render Form to the user.
     return(
         <Nav className="justify-content-center" style={{backgroundColor:"black"}} activeKey="/home">
-        <Nav.Item>
-          <Nav.Link href="/aboutus">About Us</Nav.Link>
+        <Nav.Item >
+          <Nav.Link href="/aboutus"  style={{color:"white"}}>About Us</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link href="/mainpage">Home</Nav.Link>
+          <Nav.Link href="/mainpage"  style={{color:"white"}}>Home</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link href="/">Log out</Nav.Link>
+          <Nav.Link href="/" style={{color:"white"}}>Log out</Nav.Link>
         </Nav.Item>
       </Nav>
     

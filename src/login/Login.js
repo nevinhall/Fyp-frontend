@@ -26,13 +26,19 @@ const Login = () =>{
         const res =  await HandleFormData(email,password,url,rediectTo)
 
         if (res == "failure"){
-            window.location.reload();
+            // window.location.reload();
         }else{
-            console.log(typeof res);
+            console.log("authenticated");
             setAuthenticated(res)
             localStorage.clear()
             localStorage.setItem('user_id', res);
-            routeChange(history,"/mainpage")
+
+            if(res == "19dd300f-2aed-4bdf-a980-cda9fe078b74"){
+                routeChange(history,"/admin")
+            }else{
+                routeChange(history,"/mainpage")
+            }
+           
         }
 
     

@@ -27,10 +27,8 @@ const MainPage = () =>{
       console.log("use effect");
       var res = await HandleUserIDPost(authenticated, url)
 
-
       console.log("This is res", res);
         
-
         if(!res){
           setShow(true)
          
@@ -89,7 +87,7 @@ const MainPage = () =>{
 
                       <CardComponent   
                       title={"User Profile"} 
-                      data={"View. amenend or create your user profile here"}
+                      data={"View or delete your user profile here"}
                       link={"/userprofilehome"}
                       image={userprofile}
                     />

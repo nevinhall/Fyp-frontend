@@ -8,6 +8,7 @@ import authContext from "../sharedComponents/authContext";
 const ViewAllExercisePlans =  () =>{
     const  authenticated = localStorage.getItem('user_id');
     console.log("USER IS:", authenticated );
+    const axios = require('axios').default;
 
     const [allPlans, setAllPlans] = useState([]);
     const url = "http://127.0.0.1:5000/get_exercise_plan"
@@ -24,6 +25,24 @@ const ViewAllExercisePlans =  () =>{
 
      
     }, []);
+
+
+    const setToCurrentExercisePlan = async (exercise_plan_id) => {
+        
+        const setNewPlan = "http://127.0.0.1:5000/set_current_user_exercise_plan"
+        var bodyFormData = new FormData();
+
+        bodyFormData.append("user_id",authenticated);
+        bodyFormData.append("exercise_plan_id",exercise_plan_id);
+
+        const result =  axios.post(setNewPlan,bodyFormData,{headers : {"Access-Control-Allow-Origin": "*"}})
+    
+       
+        HandleUserIDPost(authenticated,url)
+        window.location.reload();
+        
+    }
+
 
 
 
@@ -54,7 +73,7 @@ const ViewAllExercisePlans =  () =>{
          </Card.Text>
          </Card.Body>
          <Card.Footer>
-             <Button variant="primary" onClick={() => 1+1}>View</Button>
+            <Button variant="primary" onClick={() => setToCurrentExercisePlan(exerciseplan.ID)}>View</Button>
          </Card.Footer>
      </Card>
         )): "Loading"}
