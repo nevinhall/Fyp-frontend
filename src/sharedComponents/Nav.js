@@ -10,15 +10,12 @@ const  Navbar = (props) =>{
     const history = useHistory();
     //Render Form to the user.
     return(
-        <Nav className="justify-content-center" style={{backgroundColor:"black"}} activeKey="/home">
-        <Nav.Item >
-          <Nav.Link href="/aboutus"  style={{color:"white"}}>About Us</Nav.Link>
+        <Nav className="justify-content-end" style={{backgroundColor:"black"}} activeKey="/home">
+        <Nav.Item>
+          <Nav.Link href="/mainpage"  style={{color:"white"}}><strong>Home</strong></Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link href="/mainpage"  style={{color:"white"}}>Home</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link href="/" style={{color:"white"}}>Log out</Nav.Link>
+          <Nav.Link href="/" style={{color:"red"}}><strong>log out</strong></Nav.Link>
         </Nav.Item>
       </Nav>
     

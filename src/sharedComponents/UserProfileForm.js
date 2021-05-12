@@ -5,6 +5,7 @@ import HandleCreateProfile from './HandleCreateProfile';
 import authContext from "../sharedComponents/authContext";
 import routeChange from './routeChange';
 import {Form,Button,Checkbox} from 'react-bootstrap';
+import Navbar from "../sharedComponents/Nav"
 
 
 const UserProfileForm = (props) =>{
@@ -13,7 +14,7 @@ const UserProfileForm = (props) =>{
     const [weight, setWeight ]= useState(0);
     const [dietaryOptions, setDietaryOptions ]= useState("");
     const [allergies, setAllergies ]= useState("");
-    const [gender, setGender ]= useState("");
+    const [gender, setGender ]= useState("male");
     const [activityLevel, setActivityLevel ]= useState("");
     const [age, setAge ] = useState(0);
     const  authenticated = localStorage.getItem('user_id');
@@ -21,7 +22,6 @@ const UserProfileForm = (props) =>{
 
       
     useEffect(() => {
-        
         setActivityLevel("low")
         setGender("male")
       }, []);
@@ -90,7 +90,10 @@ const UserProfileForm = (props) =>{
  
     //Render Form to the user.
     return(
+        <div>
+            <Navbar />
         <div  className="d-flex justify-content-around mt-5">
+     
         <Form onSubmit={onSubmit}>  
             <Form.Group controlId="height">
                 <Form.Label>Height 🦒</Form.Label>
@@ -143,6 +146,7 @@ const UserProfileForm = (props) =>{
                 Submit
             </Button>
         </Form>
+        </div>
         </div>
      
     )

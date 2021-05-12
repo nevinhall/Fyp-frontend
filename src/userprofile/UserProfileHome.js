@@ -17,15 +17,11 @@ const UserProfileHome = () =>{
         <div>
         <Navbar/>
         <Tabs defaultActiveKey="My Profile" id="uncontrolled-tab-example">
-            <Tab eventKey="Create" title="Create Meal Plan">
-               
-            </Tab>
             <Tab eventKey="My Profile" title="My Profile">
                 <ViewUserProfile />
             </Tab>
             <Tab eventKey="Delete My Profile" title="Delete My Profile">
                 <DeleteUserProfile/>
-               
             </Tab>
         </Tabs>
         </div>

@@ -37,7 +37,7 @@ const  DeleteMyProfile = (props) =>{
              before getting started ✔
           </p>
 
-          <Button onClick={deleteUserProfile}>Delte My Profile</Button>
+          <Button variant="danger" onClick={deleteUserProfile}>Delte My Profile</Button>
         </Col>
       
       </Row>

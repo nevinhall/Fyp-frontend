@@ -48,7 +48,7 @@ const CreateExercisePlan = () =>{
                for you.
             </p>  
 
-      <Button onClick={generateExercisePlan}>Generate Meal Plan</Button>
+      <Button onClick={generateExercisePlan}>Generate Exercise Plan</Button>
     </div>
      </div>   
       )

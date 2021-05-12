@@ -17,7 +17,7 @@ const GenerateExercisePlanHome = () =>{
         <div>
         <Navbar/>
  
-        <Tabs defaultActiveKey="Home" id="uncontrolled-tab-example">
+        <Tabs defaultActiveKey="Home" id="uncontrolled-tab-example" >
             <Tab eventKey="Create" title="Create Excercise Plan">
                  <CreateExercisePlan />
             </Tab>

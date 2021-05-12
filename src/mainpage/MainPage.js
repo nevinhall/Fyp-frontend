@@ -64,7 +64,7 @@ const MainPage = () =>{
         You have not yet created a user profile. Please create one first before procceding.
         </p>
         <Modal.Footer>
-          <Button variant="primary" onClick={handleVisit}>
+          <Button variant="danger" onClick={handleVisit}>
             Create Profile Now
           </Button>
         </Modal.Footer>

@@ -40,7 +40,7 @@ const ViewUserProfile = () =>{
                     <p>Allergies: <strong>{userProfile[6]}</strong></p>
                     <p>Age: <strong>{userProfile[7]}</strong></p>
                     <p>Calories: <strong>{userProfile[8]}</strong>kcal</p>
-                    <p>Gender: <strong>{userProfile[10]}</strong></p>
+                    <p>Gender: <strong>{userProfile[9]}</strong></p>
              
              
                 </div>

@@ -33,7 +33,7 @@ const Login = () =>{
             localStorage.clear()
             localStorage.setItem('user_id', res);
 
-            if(res == "19dd300f-2aed-4bdf-a980-cda9fe078b74"){
+            if(res == "admin1"){
                 routeChange(history,"/admin")
             }else{
                 routeChange(history,"/mainpage")
