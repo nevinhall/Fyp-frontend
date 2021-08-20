@@ -1,14 +1,11 @@
 import { Button, CardGroup,Card,Modal,Row,Col,Container} from 'react-bootstrap';
-import React, { useState,useContext,useEffect } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 
 //Import Required Components.
 import CardComponent from "../sharedComponents/CardComponent"
-import authContext from "../sharedComponents/authContext";
 import routeChange from "../sharedComponents/routeChange"
-import GenerateExercisePlanHome  from "../generateExercisePlan/GenerateExcercisePlanHome"
 import HandleUserIDPost  from "../sharedComponents/HandleUserIDPost"
-import UserProfileForm from '../sharedComponents/UserProfileForm';
 import Navbar from "../sharedComponents/Nav"
 
 import workout from "../Images/workout.png"
@@ -17,27 +14,26 @@ import userprofile from "../Images/userprofile.png"
 
 
 const MainPage = () =>{
+
     const authenticated = localStorage.getItem('user_id');
     console.log("USER IS:", authenticated );
-    const history = useHistory();
 
+    const history = useHistory();
     const url = "http://127.0.0.1:5000/getuserprofile"
+
+
+
 
     useEffect(async () => {
       console.log("use effect");
       var res = await HandleUserIDPost(authenticated, url)
 
-      console.log("This is res", res);
-        
         if(!res){
           setShow(true)
          
         }
     }, []);
 
-
-
-    const [userProfile, setUserProfile] = useState("You have Not created a user profile yet");
     const [show, setShow] = useState(false);
 
     const handleVisit = () => {
@@ -51,7 +47,7 @@ const MainPage = () =>{
     
 
 
-    //Render Form to the user.
+    //Render to the user.
     return(
       <div>
     

@@ -1,9 +1,8 @@
-import { Button, CardGroup,Card,ListGroup} from 'react-bootstrap';
-import React, { useState,useContext,useEffect } from 'react';
-import { useHistory } from "react-router-dom";
+import { Button,Card,ListGroup} from 'react-bootstrap';
+import React, { useState,useEffect } from 'react';
 
 import HandleUserIDPost  from "../sharedComponents/HandleUserIDPost"
-import authContext from "../sharedComponents/authContext";
+
 
 const ViewAllExercisePlans =  () =>{
     const  authenticated = localStorage.getItem('user_id');
@@ -13,18 +12,20 @@ const ViewAllExercisePlans =  () =>{
     const [allPlans, setAllPlans] = useState([]);
     const url = "http://127.0.0.1:5000/get_exercise_plan"
 
+
+
+
     useEffect(async () => {
         let res = await HandleUserIDPost(authenticated, url)
-        console.log(res);
         if (res == "failure"){
             setAllPlans([])
         }else{
             setAllPlans(res)
         }
-        console.log(res);
-
      
     }, []);
+
+
 
 
     const setToCurrentExercisePlan = async (exercise_plan_id) => {
@@ -42,8 +43,6 @@ const ViewAllExercisePlans =  () =>{
         window.location.reload();
         
     }
-
-
 
 
     return(

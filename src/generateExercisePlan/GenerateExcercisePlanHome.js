@@ -1,8 +1,6 @@
-import { Button, CardGroup,Nav,Tabs,Tab} from 'react-bootstrap';
-import React, { useState,useContext } from 'react';
-import { useHistory } from "react-router-dom";
+import {Tabs,Tab} from 'react-bootstrap';
+import React from 'react';
 
-import authContext from "../sharedComponents/authContext";
 import CreateExercisePlan from "../generateExercisePlan/CreateExercisePlan"
 import ViewCurrentExercisePlan from "../generateExercisePlan/ViewCurrentExercisePlan"
 import ViewAllExercisePlans from "../generateExercisePlan/ViewAllExercisePlans"
@@ -12,7 +10,7 @@ const GenerateExercisePlanHome = () =>{
     const  authenticated = localStorage.getItem('user_id');
     console.log("USER IS:", authenticated );
 
-    //Render Form to the user.
+    //Render to the user.
     return(
         <div>
         <Navbar/>

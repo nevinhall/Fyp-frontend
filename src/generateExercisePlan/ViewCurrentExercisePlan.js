@@ -1,11 +1,8 @@
-import { Button, CardGroup,Card,Tabs,Tab,Col,Row,Container} from 'react-bootstrap';
-import React, { useState,useContext,useEffect} from 'react';
-import { useHistory } from "react-router-dom";
-
-import authContext from "../sharedComponents/authContext";
-import HandleUserIDPost  from "../sharedComponents/HandleUserIDPost"
+import {Card,Col,Row,Container} from 'react-bootstrap';
+import React, { useState,useEffect} from 'react';
 
 const ViewCurrentExercisePlan = () =>{
+
     const  authenticated = localStorage.getItem('user_id');
     const [allPlans, setAllPlans] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -13,6 +10,8 @@ const ViewCurrentExercisePlan = () =>{
     const axios = require('axios').default;
 
   
+
+
     useEffect(() => {
         const fetchData = async () =>{
             var bodyFormData = new FormData();
@@ -24,16 +23,14 @@ const ViewCurrentExercisePlan = () =>{
             }else{
               setAllPlans(result.data.exercise_plan)
             }
-            
-             console.log(allPlans);
              setIsLoaded(true)
-            
-         
         }
 
         fetchData()
       }, []);
-  
+
+      
+
 
     return(
         <Container fluid>
@@ -99,15 +96,8 @@ const ViewCurrentExercisePlan = () =>{
         </Row>
       </Container>
     )
-    
 
-    //Render Form to the user.
-    
-    
 }
-
-
-
 
 
 export default ViewCurrentExercisePlan;

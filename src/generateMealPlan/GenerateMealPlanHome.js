@@ -1,18 +1,16 @@
-import { Button, CardGroup,Card,Tabs,Tab} from 'react-bootstrap';
-import React, { useState,useContext } from 'react';
-import { useHistory } from "react-router-dom";
+import {Tabs,Tab} from 'react-bootstrap';
+import React from 'react';
 
-import authContext from "../sharedComponents/authContext";
 import CreateMealPlan from "../generateMealPlan/CreateMealPlan"
 import ViewAllMealPlans from "../generateMealPlan/ViewAllMealPlans"
 import ViewCurrentMealPlan from "../generateMealPlan/ViewCurrentMealPlan"
 import Navbar from "../sharedComponents/Nav"
 
 const GenerateMealPlanHome = () =>{
-    // const { authenticated } = useContext(authContext);
+
     const  authenticated = localStorage.getItem('user_id');
 
-    //Render Form to the user.
+    //Render to the user.
     return(
         <div>
         <Navbar/>

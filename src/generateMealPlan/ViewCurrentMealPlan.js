@@ -1,20 +1,14 @@
-import { Button, CardGroup,Card,Tabs,Tab,ListGroup, ResponsiveEmbed} from 'react-bootstrap';
+import { Button,Card,ListGroup} from 'react-bootstrap';
 import React, { useState,useContext,useEffect} from 'react';
 import { useHistory } from "react-router-dom";
-
-
-import authContext from "../sharedComponents/authContext";
-import HandleUserIDPost  from "../sharedComponents/HandleUserIDPost"
-import MealCard from "../generateMealPlan/MealCard"
 
 const ViewCurrentMealPlan = (props) =>{
     const  authenticated = localStorage.getItem('user_id');
     const [allPlans, setAllPlans] = useState([]);
     const url = "http://127.0.0.1:5000/get_user_current_meal_plan"
-    const mealplanString = ""
     const axios = require('axios').default;
-    
     const history = useHistory();
+
 
 
 
@@ -24,11 +18,9 @@ const ViewCurrentMealPlan = (props) =>{
             bodyFormData.append("user_id",authenticated);
             const result = await axios.post(url,bodyFormData,{headers : {"Access-Control-Allow-Origin": "*"}})
 
-            console.log(result);
             if(!result.data){
                 setAllPlans([])
             }else{
-                console.log("HERE");
                 setAllPlans(result.data.mealplan)
             }
          
@@ -38,22 +30,10 @@ const ViewCurrentMealPlan = (props) =>{
       }, []);
   
 
-   
-   
- 
-    //Render Form to the user.s
-    console.log(typeof allPlans);
-    console.log(allPlans);
-
-    allPlans.forEach(element => {
-        console.log(element);
-    });
     return(
         <div className="d-flex justify-content-around">
         <div className="w-75">
            {allPlans.length > 0 ? allPlans.map( (meal) => (
-            //    <p>{meal.Meal}</p>
-
         
             <Card className="mt-5">
             <Card.Body>

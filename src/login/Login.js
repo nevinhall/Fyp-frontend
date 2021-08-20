@@ -1,6 +1,6 @@
 import React, { useState,useContext} from 'react';
 import { useHistory } from "react-router-dom";
-import {Container,Col,Row} from 'react-bootstrap';
+import {Container,Row} from 'react-bootstrap';
 
 import Form from "../sharedComponents/Form"
 import HandleFormData from "../sharedComponents/HandleFormData"
@@ -26,7 +26,7 @@ const Login = () =>{
         const res =  await HandleFormData(email,password,url,rediectTo)
 
         if (res == "failure"){
-            // window.location.reload();
+            window.location.reload();
         }else{
             console.log("authenticated");
             setAuthenticated(res)

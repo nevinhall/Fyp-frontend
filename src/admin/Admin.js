@@ -1,11 +1,7 @@
 import {Row,Col,Container,ListGroup,Card,Button,Nav,Form} from 'react-bootstrap';
 import React, {useEffect,useState} from 'react';
 import { useHistory } from "react-router-dom";
-import authContext from "../sharedComponents/authContext";
-import Navbar from "../sharedComponents/Nav"
 import HandleGet from '../sharedComponents/HandleGet';
-
-
 
 
 const Admin = () =>{
@@ -31,7 +27,7 @@ const Admin = () =>{
     const [genderFemale, setGenderFemale] = useState(0);
 
 
-    
+
 
     useEffect(async () => {
         let resGetMeals = await HandleGet(getAllMeals)
@@ -41,7 +37,7 @@ const Admin = () =>{
             setMeals(resGetMeals)
         }
 
-        console.log(meals);
+        console.log("Fetched Measl Admin:",meals);
 
 
         let resGetExercises = await HandleGet(getAllExercises)
@@ -67,14 +63,10 @@ const Admin = () =>{
     
 
         if(!genderMaleResult.data){
-            console.log(genderMaleResult.data);
             setGenderMale(0)
         }else{
-         
             setGenderMale(genderMaleResult.data)
         }
-
-
 
         var genderFemaleFormData = new FormData();
         genderFemaleFormData.append("gender","female");
@@ -82,16 +74,15 @@ const Admin = () =>{
  
 
         if(!genderFemaleResult.data){
-            console.log(genderFemaleResult.data);
             setGenderFemale(0)
         }else{
-        
             setGenderFemale(genderFemaleResult.data)
         }
         
-     
-     
     }, []);
+
+
+
 
     const [meal, setMealName]= useState("");
     const [protein, setProtein]= useState(0.0);
@@ -111,52 +102,19 @@ const Admin = () =>{
     const [deleteMeal, setDeleteMeal]= useState("");
 
     
-    const onChangeMealName = (e) => {
-        console.log(e.target.value);
-        setMealName(e.target.value)
-        
-    }
+    const onChangeMealName = (e) => {setMealName(e.target.value)}
 
-    const onChangeProtein= (e) => {
-        console.log(e.target.value);
-        setProtein(e.target.value)
-        
-    }
+    const onChangeProtein= (e) => {setProtein(e.target.value)}
 
-    
-    const onChangeCarbs = (e) => {
-        console.log(e.target.value);
-        setCarbs(e.target.value)
-        
-    }
+    const onChangeCarbs = (e) => {setCarbs(e.target.value)}
 
-    
-    const onChangeFats = (e) => {
-        console.log(e.target.value);
-        setFats(e.target.value)
-        
-    }
+    const onChangeFats = (e) => {setFats(e.target.value)}
 
-    
-    const onChangeYoutube = (e) => {
-        console.log(e.target.value);
-        setYoutubeLink(e.target.value)
-        
-    }
+    const onChangeYoutube = (e) => {setYoutubeLink(e.target.value)}
 
-    
-    const onChangeMealInstructions = (e) => {
-        console.log(e.target.value);
-        setMealInstructions(e.target.value)
-        
-    }
+    const onChangeMealInstructions = (e) => {setMealInstructions(e.target.value)}
 
-    
-    const onChangeMealArea = (e) => {
-        console.log(e.target.value);
-        setMealArea(e.target.value)
-        
-    }
+    const onChangeMealArea = (e) => {setMealArea(e.target.value)}
 
     const onChangeVegatairan = (e) => {
         var checkBox = document.getElementById("isVegatarian");
@@ -164,57 +122,24 @@ const Admin = () =>{
             setVegatarianMeal("Vegatarian")
           } else {
             setVegatarianMeal("")
-          }
-          
-         
+          } 
     }
 
+    //Onclick Handlers.
+    const onChangeExerciseName = (e) => {setExerciseName(e.target.value)}
 
-    
-    const onChangeExerciseName = (e) => {
-        console.log(e.target.value);
-        setExerciseName(e.target.value)
-        
-    }
+    const onChangeExerciseDescription = (e) => {setExerciseDescription(e.target.value)}
 
+    const onChangeExerciseType = (e) => {setExerciseType(e.target.value)}
 
-        
-    const onChangeExerciseDescription = (e) => {
-        console.log(e.target.value);
-        setExerciseDescription(e.target.value)
-        
-    }
+    const onChangeCalories = (e) => {setCalories(e.target.value)}
+
+    const onChangeMealDelete = (e) => {setDeleteMeal(e.target.value)}
+
+    const onChangeExerciseDelete = (e) => {setDeleteExercise(e.target.value)}
 
 
-    const onChangeExerciseType = (e) => {
-        
-        console.log(e.target.value);
-        setExerciseType(e.target.value)
-        
-    }
-
-    const onChangeCalories = (e) => {
-        console.log(e.target.value);
-        setCalories(e.target.value)
-        
-    }
-
-
-    const onChangeMealDelete = (e) => {
-        console.log(e.target.value);
-        setDeleteMeal(e.target.value)
-        
-    }
-
-
-    const onChangeExerciseDelete = (e) => {
-        console.log(e.target.value);
-        setDeleteExercise(e.target.value)
-        
-        
-    }
-
-
+    //OnSubmit Handlers.
     const onSubmitExerciseDelete = async () => {
         var bodyFormData = new FormData();
         bodyFormData.append("exercise_name", deleteExercise)
@@ -231,10 +156,6 @@ const Admin = () =>{
         await axios.post("http://127.0.0.1:5000/del_meal",bodyFormData,{headers : {"Access-Control-Allow-Origin": "*"}})
         
     }
-
-
-
-
 
 
     const onSubmitMeal = async () =>{
@@ -256,7 +177,6 @@ const Admin = () =>{
 
 
 
-    
     const onSubmitExercise = async () =>{
 
         var bodyFormData = new FormData();
@@ -268,17 +188,7 @@ const Admin = () =>{
         await axios.post("http://127.0.0.1:5000/create_exercise",bodyFormData,{headers : {"Access-Control-Allow-Origin": "*"}})
        
      
-        console.log("sending",exerciseName, exerciseDescription, exerciseType);
     }
-
-
-
-
-
-
-
-
-
 
 
     //Render Form to the user.
@@ -288,6 +198,9 @@ const Admin = () =>{
             <Nav className="justify-content-end mb-5" style={{backgroundColor:"black"}} activeKey="/home">
                 <Nav.Item>
                 <Nav.Link href="/" style={{color:"white"}}>Log out</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                <Nav.Link href="http://localhost:3000/d/rYdddlPWk/node-exporter-full?orgId=1&refresh=1m" style={{color:"white"}}>Backend Metrics</Nav.Link>
                 </Nav.Item>
             </Nav>
             <Container fluid>

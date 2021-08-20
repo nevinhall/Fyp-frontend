@@ -1,8 +1,7 @@
-import { Button, CardGroup,Card,Tabs,Tab,Image,Nav} from 'react-bootstrap';
-import React, { useState,useContext } from 'react';
-import { useHistory } from "react-router-dom";
+import { Button,Image,Nav} from 'react-bootstrap';
+import React from 'react';
 
-import authContext from "../sharedComponents/authContext";
+
 import HandleUserIDPost  from "../sharedComponents/HandleUserIDPost"
 import robot from "../Images/robot.png"
 
@@ -25,17 +24,11 @@ const CreateExercisePlan = () =>{
         const result =  axios.post(setNewPlan,bodyFormData,{headers : {"Access-Control-Allow-Origin": "*"}})
     
        
-     
-        
+    
         window.location.reload();
 
-        
-      
-      
-      
-        
     }
-    //Render Form to the user.
+    //Render Page to the user.
     return(
     
         <div className="d-flex justify-content-center m-4">

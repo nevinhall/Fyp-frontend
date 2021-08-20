@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Button, CardGroup,Card,Image} from 'react-bootstrap';
+import React from 'react';
+import { Button,Image} from 'react-bootstrap';
 import { useHistory } from "react-router-dom";
 
 import healthimage from "../Images/logo192.png"
@@ -9,7 +9,8 @@ import routeChange from "../sharedComponents/routeChange"
 const  Landing = (props) =>{
     const history = useHistory();
     localStorage.clear()
-    //Render Form to the user.
+
+    //Render to the user.
     return(
         <div className="d-flex justify-content-around m-5">
             <div className="w-50">

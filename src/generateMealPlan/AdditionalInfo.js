@@ -8,6 +8,8 @@ import Navbar from "../sharedComponents/Nav"
 
 const  AdditionalInfo = (props) =>{
     const history = useHistory();
+
+    
     //Render Form to the user.
     return(
         <div>

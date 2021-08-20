@@ -1,9 +1,7 @@
-import { Button, CardGroup,Card,Tabs,Tab,ListGroup} from 'react-bootstrap';
-import React, { useState,useContext,useEffect } from 'react';
-import { useHistory } from "react-router-dom";
+import { Button,Card,ListGroup} from 'react-bootstrap';
+import React, { useState,useEffect } from 'react';
 
 import HandleUserIDPost  from "../sharedComponents/HandleUserIDPost"
-import authContext from "../sharedComponents/authContext";
 
 const ViewAllMealPlans =  () =>{
     const  authenticated = localStorage.getItem('user_id');
@@ -13,18 +11,20 @@ const ViewAllMealPlans =  () =>{
     const [allPlans, setAllPlans] = useState([]);
     const url = "http://127.0.0.1:5000/get_meal_plan"
 
+
+
+
     useEffect(async () => {
         let res = await HandleUserIDPost(authenticated, url)
-        console.log(res);
         if (res == "failure"){
             setAllPlans([])
         }else{
             setAllPlans(res)
         }
-        console.log(res);
-
      
     }, []);
+
+
 
 
     const setToCurrentMealPlan = async (meal_id) => {
@@ -37,7 +37,6 @@ const ViewAllMealPlans =  () =>{
 
         const result =  axios.post(setNewPlan,bodyFormData,{headers : {"Access-Control-Allow-Origin": "*"}})
     
-       
         HandleUserIDPost(authenticated,url)
         window.location.reload();
         
@@ -48,7 +47,7 @@ const ViewAllMealPlans =  () =>{
     return(
         <div>
         {allPlans.length > 0  ? allPlans.map((mealplan) => (
-         //    <p>{meal.Meal}</p>
+
          <Card>
          <Card.Body>
          <Card.Title><h2>{mealplan.ID}</h2></Card.Title>
